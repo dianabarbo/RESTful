@@ -41,8 +41,13 @@ print("\n",putResponse.json())
 # DELETE request
 print("\n------------ DELETING STUDENT DATA ------------")
 codeToDelete = 'T00045678'
+
+print("\nDATA TO BE DELETED")
+print(requests.get(url+'/'+codeToDelete).json())
+
 deleteResponse = requests.delete(url+"/"+codeToDelete)
 
+print("\nSERVER RESPONSE")
 print("\n",deleteResponse.json())
 
 print("\nALL STUDENTS - UPDATED")
