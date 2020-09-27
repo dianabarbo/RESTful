@@ -3,6 +3,9 @@ from flask import Flask
 from flask import jsonify
 from flask import request
 app = Flask(__name__)
+
+# DATABASE
+
 studentsDB = [
  {
  'id':'T00055671',
@@ -13,8 +16,20 @@ studentsDB = [
  'id':'T00045678',
  'name':'Maria Martinez',
  'course':'Software Engineer'
+ },
+  {
+ 'id':'T00045059',
+ 'name':'Diana Barboza',
+ 'course':'QA'
+ },
+  {
+ 'id':'T00046321',
+ 'name':'Jainha Altamar',
+ 'course':'UX'
  }
  ]
+
+# SERVER IMPLEMENTATION
 
 @app.route('/students',methods=['GET'])
 def get_all_students():
@@ -39,7 +54,7 @@ def create_student():
     dat = {
     'id': request.json['id'],
     'name': request.json['name'],
-    'course': request.json['cource']
+    'course': request.json['course']
     }
     studentsDB.append(dat)
     return jsonify(dat)
@@ -53,4 +68,4 @@ def deleteEmp(stdId):
     return jsonify({'response': 'Success'})
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
