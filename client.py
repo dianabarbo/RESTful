@@ -34,8 +34,12 @@ changedData = {
  'name':'Marcela Barboza',
  'course':'QA'
  }
+print("\nPREVIOUS DATA")
+print(requests.get(url+'/'+changedData["id"]).json())
+
 putResponse = requests.put(url+"/"+changedData["id"], json = changedData)
 
+print("\nNEW DATA")
 print("\n",putResponse.json())
 
 # DELETE request
